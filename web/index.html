@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Gestion Livraison">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Gestion Livraison">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <title>Gestion Livraison</title>
+  <link rel="manifest" href="manifest.json">
+  <script>
+    // Fonctions localStorage pour Flutter
+    window.saveToLocalStorage = function(key, value) {
+      try {
+        localStorage.setItem(key, value);
+        console.log('💾 Saved to localStorage:', key, value.substring(0, 100) + '...');
+        return true;
+      } catch (e) {
+        console.error('❌ Error saving to localStorage:', e);
+        return false;
+      }
+    };
+    
+    window.getFromLocalStorage = function(key) {
+      try {
+        const value = localStorage.getItem(key);
+        console.log('📖 Loaded from localStorage:', key, value ? value.substring(0, 100) + '...' : 'null');
+        return value;
+      } catch (e) {
+        console.error('❌ Error loading from localStorage:', e);
+        return null;
+      }
+    };
+
+    // Force localStorage sync
+    window.flutterLocalStorageSync = function() {
+      window.dispatchEvent(new Event('storage'));
+      console.log('🔄 LocalStorage sync triggered');
+    };
+  </script>
+</head>
+<body>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
